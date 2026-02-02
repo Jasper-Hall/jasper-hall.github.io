@@ -11,10 +11,9 @@
             --bg-tertiary: #1a1a24;
             --text-primary: #e0e0e0;
             --text-muted: #888;
-            --accent: #c9a55c;
-            --accent-dim: #8a7036;
             --terminal-green: #4af626;
             --border: #2a2a3a;
+            --border-accent: #3a3a4a;
         }
 
         * {
@@ -27,148 +26,181 @@
             font-family: 'SF Mono', 'Fira Code', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.5;
             min-height: 100vh;
+            padding: 20px;
         }
 
-        .container {
-            max-width: 800px;
+        .dashboard {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
         }
 
-        /* ASCII Art Header */
-        .header {
-            margin-bottom: 40px;
-            overflow-x: hidden;
-        }
-
-        .ascii-art {
-            color: var(--text-primary);
-            font-size: 11px;
-            line-height: 1.2;
-            white-space: pre;
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
             margin-bottom: 20px;
-            opacity: 0.8;
         }
 
-        .hero {
-            border-left: 2px solid var(--text-primary);
-            padding-left: 20px;
-            margin-bottom: 30px;
-        }
-
-        .hero h1 {
-            font-size: 1.8rem;
-            font-weight: normal;
+        .top-bar .ascii-mini {
             color: var(--text-primary);
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
+            font-size: 10px;
+            white-space: pre;
+            line-height: 1.1;
         }
 
-        .hero .tagline {
-            color: var(--terminal-green);
-            font-size: 0.9rem;
-        }
-
-        .hero .subtitle {
+        .top-bar .status {
+            display: flex;
+            gap: 20px;
+            font-size: 0.75rem;
             color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 8px;
-            font-style: italic;
         }
 
-        /* Sections */
-        section {
-            margin-bottom: 40px;
+        .top-bar .status span {
+            color: var(--terminal-green);
         }
 
-        h2 {
-            font-size: 0.85rem;
+        /* Main Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* Panel */
+        .panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 0;
+        }
+
+        .panel-header {
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 12px;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        /* Bio */
-        .bio {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            max-width: 600px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* Tech Stack */
+        .panel-header::before {
+            content: "●";
+            color: var(--terminal-green);
+            font-size: 0.6rem;
+        }
+
+        .panel-content {
+            padding: 16px;
+        }
+
+        /* Hero Panel */
+        .hero-panel {
+            grid-column: span 2;
+        }
+
+        .hero-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .hero-ascii {
+            color: var(--text-primary);
+            font-size: 9px;
+            white-space: pre;
+            line-height: 1.15;
+            opacity: 0.7;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .hero-text .subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            max-width: 500px;
+        }
+
+        /* Bio Panel */
+        .bio-text {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        /* Tech Stack Grid */
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
         }
 
         .tech-item {
-            background: var(--bg-secondary);
+            background: var(--bg-primary);
             border: 1px solid var(--border);
-            padding: 10px 14px;
-            font-size: 0.85rem;
-            transition: all 0.2s ease;
-        }
-
-        .tech-item:hover {
-            border-color: var(--accent-dim);
-            background: var(--bg-tertiary);
+            padding: 10px 12px;
+            font-size: 0.8rem;
         }
 
         .tech-category {
             color: var(--text-muted);
-            font-size: 0.75rem;
-            margin-bottom: 6px;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 4px;
         }
 
-        /* Projects */
-        .project-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            gap: 12px;
         }
 
-        .project-item {
-            background: var(--bg-secondary);
+        .project-card {
+            background: var(--bg-primary);
             border: 1px solid var(--border);
-            padding: 16px 20px;
-            transition: all 0.2s ease;
+            padding: 12px;
         }
 
-        .project-item:hover {
-            border-color: var(--accent-dim);
-            transform: translateX(4px);
-        }
-
-        .project-item h3 {
-            font-size: 1rem;
-            font-weight: normal;
+        .project-card h3 {
+            font-size: 0.95rem;
             color: var(--text-primary);
             margin-bottom: 6px;
+            font-weight: normal;
         }
 
-        .project-item p {
+        .project-card p {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            line-height: 1.5;
         }
 
-        .project-item .project-tags {
-            margin-top: 10px;
+        .project-tags {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
         }
 
         .tag {
-            font-size: 0.7rem;
-            padding: 3px 8px;
+            font-size: 0.65rem;
+            padding: 2px 6px;
             background: var(--bg-tertiary);
             border: 1px solid var(--border);
             color: var(--text-muted);
@@ -178,89 +210,88 @@
         .workflow-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .workflow-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 10px 14px;
-            background: var(--bg-secondary);
+            gap: 10px;
+            padding: 8px 10px;
+            background: var(--bg-primary);
             border: 1px solid var(--border);
+            font-size: 0.8rem;
         }
 
         .workflow-icon {
-            font-size: 1.2rem;
-        }
-
-        .workflow-item span {
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         /* Links */
-        .links-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
 
         .link-item {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 16px;
-            background: var(--bg-secondary);
+            padding: 10px 12px;
+            background: var(--bg-primary);
             border: 1px solid var(--border);
             text-decoration: none;
             color: var(--text-primary);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             transition: all 0.2s ease;
         }
 
         .link-item:hover {
-            border-color: var(--accent);
             background: var(--bg-tertiary);
-        }
-
-        .link-icon {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
+            border-color: var(--border-accent);
         }
 
         /* Footer */
-        footer {
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 0.8rem;
+        .footer {
+            grid-column: span 2;
             text-align: center;
+            padding: 16px;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            border-top: 1px solid var(--border);
+            margin-top: 16px;
         }
 
-        footer .status {
+        .footer .status {
             color: var(--terminal-green);
         }
 
         /* Responsive */
-        @media (max-width: 600px) {
-            .ascii-art {
-                font-size: 8px;
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr;
             }
 
-            .tech-grid {
-                grid-template-columns: 1fr 1fr;
+            .hero-panel, .footer {
+                grid-column: span 1;
+            }
+
+            .hero-content {
+                flex-direction: column;
+            }
+
+            .hero-ascii {
+                font-size: 7px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header with ASCII Art -->
-        <header class="header">
-            <pre class="ascii-art">
-
+    <div class="dashboard">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <pre class="ascii-mini">
   ▄▄▖                              ▗▖ ▗▖     ▗▄▖  ▗▄▖
   ▀▜▌                              ▐▌ ▐▌     ▝▜▌  ▝▜▌
    ▐▌ ▟██▖▗▟██▖▐▙█▙  ▟█▙  █▟█▌     ▐▌ ▐▌ ▟██▖ ▐▌   ▐▌
@@ -268,129 +299,149 @@
    ▐▌▗█▀▜▌ ▀▀█▖▐▌ ▐▌▐▛▀▀▘ █        ▐▌ ▐▌▗█▀▜▌ ▐▌   ▐▌
 ▐▄▄▟▌▐▙▄█▌▐▄▄▟▌▐█▄█▘▝█▄▄▌ █        ▐▌ ▐▌▐▙▄█▌ ▐▙▄  ▐▙▄
  ▀▀▘  ▀▀▝▘ ▀▀▀ ▐▌▀▘  ▝▀▀  ▀        ▝▘ ▝▘ ▀▀▝▘  ▀▀   ▀▀
-               ▐▌
-
             </pre>
-
-            <div class="hero">
-                <p class="tagline">Creative Technologist</p>
-                <p class="subtitle">Artist & musician turned builder, creating tools for sound, visuals, and performance.</p>
+            <div class="status">
+                <span>●</span> system: online
+                <span>●</span> build: <span id="build-id"></span>
             </div>
-        </header>
+        </div>
 
-        <!-- About Section -->
-        <section>
-            <h2>~/about</h2>
-            <p class="bio">
-                I build software and hardware tools for music-makers and artists: audio-reactive visuals, fluid improvisational performance hardware, and generative experiences. Currently pursuing MS in Entrepreneurship and Innovation at University of San Francisco and building Raybox.
-            </p>
-        </section>
-
-        <!-- Tech Stack -->
-        <section>
-            <h2>~/stack</h2>
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <div class="tech-category">Web</div>
-                    React / Next.js / Supabase
-                </div>
-                <div class="tech-item">
-                    <div class="tech-category">Creative Coding</div>
-                    p5.js / Tone.js / WebGL
-                </div>
-                <div class="tech-item">
-                    <div class="tech-category">Hardware</div>
-                    C++ / KiCad / PCB Design
-                </div>
-                <div class="tech-item">
-                    <div class="tech-category">AI Tools</div>
-                    Claude Code / Cursor
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section>
-            <h2>~/projects</h2>
-            <div class="project-list">
-                <div class="project-item">
-                    <h3>Raybox</h3>
-                    <p>The fastest path for musicians to produce release-ready promotional videos for their tracks without learning complex technical software.</p>
-                    <div class="project-tags">
-                        <span class="tag">React</span>
-                        <span class="tag">Next.js</span>
-                        <span class="tag">Supabase</span>
-                        <span class="tag">three.js</span>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <h3>Mutax</h3>
-                    <p>Experimental hardware performance instrument combining gestural control with real-time musical mutation.</p>
-                    <div class="project-tags">
-                        <span class="tag">C++</span>
-                        <span class="tag">Teensy 4.1</span>
-                        <span class="tag">KiCad</span>
-                        <span class="tag">PCB</span>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <h3>Drum Circles</h3>
-                    <p>Tone.js-based Euclidean sequencing web groovebox. Prototype platform for exploring my custom Euclidean implementation with novel "distribution" parameter, enabling pulse distribution to be front or back weighted within the bar.</p>
-                    <div class="project-tags">
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">Javascript</span>
-                        <span class="tag">Tone.js</span>
+        <!-- Main Grid -->
+        <div class="grid">
+            <!-- Hero Panel -->
+            <div class="panel hero-panel">
+                <div class="panel-header">~/identity</div>
+                <div class="panel-content">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <p class="tagline">Creative Technologist</p>
+                            <p class="subtitle">Artist & musician turned builder, creating tools for sound, visuals, and performance.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- AI Workflows -->
-        <section>
-            <h2>~/ai-workflows</h2>
-            <div class="workflow-list">
-                <div class="workflow-item">
-                    <span class="workflow-icon">🤖</span>
-                    <span>Claude Code for CLI-based development and task automation</span>
+            <!-- Bio Panel -->
+            <div class="panel">
+                <div class="panel-header">~/about</div>
+                <div class="panel-content">
+                    <p class="bio-text">
+                        I build software and hardware tools for music-makers and artists: audio-reactive visuals, fluid improvisational performance hardware, and generative experiences. Currently pursuing MS in Entrepreneurship and Innovation at University of San Francisco and building Raybox.
+                    </p>
                 </div>
-                <div class="workflow-item">
-                    <span class="workflow-icon">📝</span>
-                    <span>Cursor for IDE-based AI-assisted coding</span>
-                </div>
-                <div class="workflow-item">
-                    <span class="workflow-icon">🔄</span>
-                    <span>Custom repo management workflows for version control</span>
             </div>
+
+            <!-- Tech Stack Panel -->
+            <div class="panel">
+                <div class="panel-header">~/stack</div>
+                <div class="panel-content">
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <div class="tech-category">Web</div>
+                            React / Next.js / Supabase
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-category">Creative</div>
+                            p5.js / Tone.js / WebGL
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-category">Hardware</div>
+                            C++ / KiCad / PCB Design
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-category">AI Tools</div>
+                            Claude Code / Cursor
+                        </div>
+                    </div>
                 </div>
-        </section>
-
-        <!-- Links -->
-        <section>
-            <h2>~/connect</h2>
-            <div class="links-list">
-                <a href="https://raybox.io" class="link-item" target="_blank">
-                    <span>▲</span> Raybox
-                </a>
-                <a href="https://github.com/jasperhall" class="link-item" target="_blank">
-                    <span>⌘</span> GitHub
-                </a>
-                <a href="https://linkedin.com/in/jasperhall" class="link-item" target="_blank">
-                    <span>◈</span> LinkedIn
-                </a>
-                <a href="https://instagram.com/e.h.b" class="link-item" target="_blank">
-                    <span>◎</span> Instagram
-                </a>
             </div>
-        </section>
 
-        <!-- Footer -->
-        <footer>
-            <p>Last updated: <span id="last-updated"></span></p>
-            <p style="margin-top: 8px;">
-                Status: <span class="status">building</span> | Theme: <span>EHB+TUI</span>
-            </p>
-        </footer>
+            <!-- Projects Panel -->
+            <div class="panel" style="grid-column: span 2;">
+                <div class="panel-header">~/projects</div>
+                <div class="panel-content">
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <h3>Raybox</h3>
+                            <p>The fastest path for musicians to produce release-ready promotional videos for their tracks without learning complex technical software.</p>
+                            <div class="project-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Next.js</span>
+                                <span class="tag">Supabase</span>
+                                <span class="tag">three.js</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <h3>Mutax</h3>
+                            <p>Experimental hardware performance instrument combining gestural control with real-time musical mutation.</p>
+                            <div class="project-tags">
+                                <span class="tag">C++</span>
+                                <span class="tag">Teensy 4.1</span>
+                                <span class="tag">KiCad</span>
+                                <span class="tag">PCB</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <h3>Drum Circles</h3>
+                            <p>Tone.js-based Euclidean sequencing web groovebox with novel "distribution" parameter.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">Javascript</span>
+                                <span class="tag">Tone.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Workflows Panel -->
+            <div class="panel">
+                <div class="panel-header">~/ai-workflows</div>
+                <div class="panel-content">
+                    <div class="workflow-list">
+                        <div class="workflow-item">
+                            <span class="workflow-icon">🤖</span>
+                            <span>Claude Code - CLI development</span>
+                        </div>
+                        <div class="workflow-item">
+                            <span class="workflow-icon">📝</span>
+                            <span>Cursor - AI-assisted coding</span>
+                        </div>
+                        <div class="workflow-item">
+                            <span class="workflow-icon">🔄</span>
+                            <span>Custom repo workflows</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Links Panel -->
+            <div class="panel">
+                <div class="panel-header">~/connect</div>
+                <div class="panel-content">
+                    <div class="links-grid">
+                        <a href="https://raybox.io" class="link-item" target="_blank">
+                            <span>▲</span> Raybox
+                        </a>
+                        <a href="https://github.com/jasperhall" class="link-item" target="_blank">
+                            <span>⌘</span> GitHub
+                        </a>
+                        <a href="https://linkedin.com/in/jasperhall" class="link-item" target="_blank">
+                            <span>◈</span> LinkedIn
+                        </a>
+                        <a href="https://instagram.com/e.h.b" class="link-item" target="_blank">
+                            <span>◎</span> Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                Status: <span class="status">building</span> | Theme: <span>EHB+TUI</span> | Last updated: <span id="last-updated"></span>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -400,6 +451,9 @@
             month: 'short',
             day: 'numeric'
         });
+
+        // Generate build ID
+        document.getElementById('build-id').textContent = Math.random().toString(36).substring(2, 8).toUpperCase();
     </script>
 </body>
 </html>
