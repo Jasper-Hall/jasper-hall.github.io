@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jasperhall | Creative Technologist</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a24;
+            --text-primary: #e0e0e0;
+            --text-muted: #888;
+            --accent: #c9a55c;
+            --accent-dim: #8a7036;
+            --terminal-green: #4af626;
+            --border: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ASCII Art Header */
+        .header {
+            margin-bottom: 40px;
+            overflow-x: hidden;
+        }
+
+        .ascii-art {
+            color: var(--accent);
+            font-size: 11px;
+            line-height: 1.2;
+            white-space: pre;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .hero {
+            border-left: 2px solid var(--accent);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            font-weight: normal;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero .tagline {
+            color: var(--terminal-green);
+            font-size: 0.9rem;
+        }
+
+        .hero .subtitle {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Bio */
+        .bio {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 600px;
+        }
+
+        /* Tech Stack */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .tech-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .tech-item:hover {
+            border-color: var(--accent-dim);
+            background: var(--bg-tertiary);
+        }
+
+        .tech-category {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Projects */
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .project-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 16px 20px;
+            transition: all 0.2s ease;
+        }
+
+        .project-item:hover {
+            border-color: var(--accent-dim);
+            transform: translateX(4px);
+        }
+
+        .project-item h3 {
+            font-size: 1rem;
+            font-weight: normal;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .project-item p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .project-item .project-tags {
+            margin-top: 10px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        /* AI Workflows */
+        .workflow-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .workflow-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .workflow-icon {
+            font-size: 1.2rem;
+        }
+
+        .workflow-item span {
+            font-size: 0.9rem;
+        }
+
+        /* Links */
+        .links-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .link-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .link-item:hover {
+            border-color: var(--accent);
+            background: var(--bg-tertiary);
+        }
+
+        .link-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        footer .status {
+            color: var(--terminal-green);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .ascii-art {
+                font-size: 8px;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with ASCII Art -->
+        <header class="header">
+            <pre class="ascii-art">
+    ╔══════════════════════════════════════════════════════════════╗
+    ║  ██████╗ ██████╗ ███████╗ █████╗  ██████╗██╗  ██╗           ║
+    ║ ██╔═══██╗██╔══██╗██╔════╝██╔══██╗██╔════╝██║  ██║           ║
+    ║ ██║   ██║██████╔╝█████╗  ███████║██║     ███████║           ║
+    ║ ██║   ██║██╔══██╗██╔══╝  ██╔══██║██║     ██╔══██║           ║
+    ║ ╚██████╔╝██║  ██║███████╗██║  ██║╚██████╗██║  ██║           ║
+    ║  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝           ║
+    ║                                                              ║
+    ║           [ E N T R O P Y   H A R V E S T   B U R E A U ]    ║
+    ╚══════════════════════════════════════════════════════════════╝
+            </pre>
+
+            <div class="hero">
+                <h1>jasperhall</h1>
+                <p class="tagline">Creative Technologist</p>
+                <p class="subtitle">Building ritual technology at the intersection of art, code, and hardware</p>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section>
+            <h2>~/about</h2>
+            <p class="bio">
+                Creative Technologist refusing to choose between Artist, Engineer, and Entrepreneur.
+                Building tools for ritual technology, generative visuals, and experimental performance.
+                Currently pursuing MSEI at USF while bootstrapping toward ramen profitability.
+            </p>
+        </section>
+
+        <!-- Tech Stack -->
+        <section>
+            <h2>~/stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-category">Web</div>
+                    React / Next.js / Supabase
+                </div>
+                <div class="tech-item">
+                    <div class="tech-category">Creative Coding</div>
+                    p5.js / Tone.js / WebGL
+                </div>
+                <div class="tech-item">
+                    <div class="tech-category">Hardware</div>
+                    C++ / KiCad / PCB Design
+                </div>
+                <div class="tech-item">
+                    <div class="tech-category">AI Tools</div>
+                    Claude Code / Cursor
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section>
+            <h2>~/projects</h2>
+            <div class="project-list">
+                <div class="project-item">
+                    <h3>Raybox</h3>
+                    <p>SaaS platform transforming music into synchronized generative visuals. The path to ramen profitability.</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Next.js</span>
+                        <span class="tag">Supabase</span>
+                        <span class="tag">Tone.js</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <h3>Mutax</h3>
+                    <p>Experimental hardware performance instrument combining gestural control with real-time musical mutation.</p>
+                    <div class="project-tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">JUCE</span>
+                        <span class="tag">KiCad</span>
+                        <span class="tag">PCB</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <h3>Phonoglyph</h3>
+                    <p>Hardware prototypes exploring the intersection of sound, ritual, and tangible interfaces.</p>
+                    <div class="project-tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">Audio DSP</span>
+                        <span class="tag">Prototyping</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Workflows -->
+        <section>
+            <h2>~/ai-workflows</h2>
+            <div class="workflow-list">
+                <div class="workflow-item">
+                    <span class="workflow-icon">🤖</span>
+                    <span>Claude Code for CLI-based development and task automation</span>
+                </div>
+                <div class="workflow-item">
+                    <span class="workflow-icon">📝</span>
+                    <span>Cursor for IDE-based AI-assisted coding</span>
+                </div>
+                <div class="workflow-item">
+                    <span class="workflow-icon">🔄</span>
+                    <span>Custom repo management workflows for version control</span>
+            </div>
+                </div>
+        </section>
+
+        <!-- Links -->
+        <section>
+            <h2>~/connect</h2>
+            <div class="links-list">
+                <a href="https://raybox.io" class="link-item" target="_blank">
+                    <span>▲</span> Raybox
+                </a>
+                <a href="https://github.com/jasperhall" class="link-item" target="_blank">
+                    <span>⌘</span> GitHub
+                </a>
+                <a href="https://linkedin.com/in/jasperhall" class="link-item" target="_blank">
+                    <span>◈</span> LinkedIn
+                </a>
+                <a href="https://instagram.com/e.h.b" class="link-item" target="_blank">
+                    <span>◎</span> Instagram
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Last updated: <span id="last-updated"></span></p>
+            <p style="margin-top: 8px;">
+                Status: <span class="status">building</span> | Theme: <span>EHB+TUI</span>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Update timestamp
+        document.getElementById('last-updated').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>
