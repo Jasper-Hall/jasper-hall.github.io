@@ -6,13 +6,12 @@
     <title>jasperhall | Creative Technologist</title>
     <style>
         :root {
-            --bg: #0a0e14;
-            --panel-bg: #0d1117;
-            --accent: #00ffff;
-            --accent-dim: rgba(0, 255, 255, 0.3);
-            --text: #c0c0c0;
-            --text-dim: #6a737d;
-            --border: 1px solid var(--accent);
+            --bg: #1a1b1e;
+            --panel-bg: #25262b;
+            --text: #c1c2c5;
+            --text-dim: #5c5f66;
+            --border: 1px solid #373a40;
+            --border-hover: 1px solid #5c5f66;
         }
 
         * {
@@ -47,10 +46,11 @@
         }
 
         .ascii-mini {
-            color: var(--accent);
+            color: var(--text);
             font-size: 9px;
             white-space: pre;
             line-height: 1.1;
+            opacity: 0.9;
         }
 
         .status-line {
@@ -69,28 +69,17 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: var(--accent);
-            animation: pulse 2s infinite;
-        }
-
-        .status-dot.offline {
             background: var(--text-dim);
-            animation: none;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
         }
 
         .status-label {
             color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            text-transform: lowercase;
+            letter-spacing: 0px;
         }
 
         .status-value {
-            color: var(--accent);
+            color: var(--text);
         }
 
         /* Grid Layout */
@@ -113,13 +102,15 @@
             padding: 8px 12px;
             border-bottom: var(--border);
             font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
+            text-transform: lowercase;
+            letter-spacing: 0px;
+            color: var(--text);
+            opacity: 0.8;
         }
 
         .panel-header::before {
-            content: "›";
+            content: "/";
+            opacity: 0.5;
         }
 
         .panel-content {
@@ -139,8 +130,8 @@
 
         .tagline {
             font-size: 1.1rem;
-            color: var(--accent);
-            letter-spacing: 1px;
+            color: var(--text);
+            letter-spacing: 0px;
         }
 
         .subtitle {
@@ -167,14 +158,13 @@
             padding: 8px 10px;
             border: var(--border);
             font-size: 0.7rem;
-            background: rgba(0, 255, 255, 0.02);
         }
 
         .tech-category {
-            color: var(--accent);
+            color: var(--text-dim);
             font-size: 0.55rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            text-transform: lowercase;
+            letter-spacing: 0px;
             margin-bottom: 4px;
         }
 
@@ -188,17 +178,17 @@
         .project-card {
             border: var(--border);
             padding: 12px;
-            transition: background-color 0.2s;
+            transition: border-color 0.2s;
         }
 
         .project-card:hover {
-            background: rgba(0, 255, 255, 0.05);
+            border-color: var(--border-hover);
         }
 
         .project-card h3 {
             font-size: 0.8rem;
             font-weight: normal;
-            color: var(--accent);
+            color: var(--text);
             margin-bottom: 6px;
         }
 
@@ -218,8 +208,8 @@
         .tag {
             font-size: 0.55rem;
             padding: 2px 6px;
-            border: 1px solid var(--accent-dim);
-            color: var(--accent);
+            border: var(--border);
+            color: var(--text-dim);
         }
 
         /* Workflows */
@@ -239,7 +229,7 @@
         }
 
         .workflow-icon {
-            color: var(--accent);
+            opacity: 0.5;
             font-size: 0.6rem;
         }
 
@@ -263,16 +253,16 @@
         }
 
         .link-item:hover {
-            background: rgba(0, 255, 255, 0.1);
-        }
-
-        .link-item:hover span {
-            color: var(--accent);
+            border-color: var(--border-hover);
         }
 
         .link-item span {
             color: var(--text-dim);
             transition: color 0.2s;
+        }
+
+        .link-item:hover span {
+            color: var(--text);
         }
 
         /* Footer */
@@ -290,7 +280,7 @@
         }
 
         .footer span {
-            color: var(--accent);
+            color: var(--text-dim);
         }
 
         /* Responsive */
@@ -341,7 +331,7 @@
                 <div class="status-item">
                     <span class="status-dot"></span>
                     <span class="status-label">theme</span>
-                    <span class="status-value">edex-ui</span>
+                    <span class="status-value">arthur</span>
                 </div>
             </div>
         </div>
@@ -350,7 +340,7 @@
         <div class="grid">
             <!-- Hero Panel -->
             <div class="panel hero-panel">
-                <div class="panel-header">~/identity</div>
+                <div class="panel-header">identity</div>
                 <div class="panel-content">
                     <div class="hero-content">
                         <p class="tagline">Creative Technologist</p>
@@ -361,7 +351,7 @@
 
             <!-- About Panel -->
             <div class="panel">
-                <div class="panel-header">~/about</div>
+                <div class="panel-header">about</div>
                 <div class="panel-content">
                     <p class="bio">
                         I build software and hardware tools for music-makers and artists: audio-reactive visuals, fluid improvisational performance hardware, and generative experiences. Currently pursuing MS in Entrepreneurship and Innovation at University of San Francisco and building Raybox.
@@ -371,7 +361,7 @@
 
             <!-- Tech Stack Panel -->
             <div class="panel">
-                <div class="panel-header">~/stack</div>
+                <div class="panel-header">stack</div>
                 <div class="panel-content">
                     <div class="tech-grid">
                         <div class="tech-item">
@@ -396,7 +386,7 @@
 
             <!-- Projects Panel -->
             <div class="panel" style="grid-column: span 2;">
-                <div class="panel-header">~/projects</div>
+                <div class="panel-header">projects</div>
                 <div class="panel-content">
                     <div class="projects-grid">
                         <div class="project-card">
@@ -437,19 +427,19 @@
 
             <!-- AI Workflows Panel -->
             <div class="panel">
-                <div class="panel-header">~/ai-workflows</div>
+                <div class="panel-header">ai-workflows</div>
                 <div class="panel-content">
                     <div class="workflow-list">
                         <div class="workflow-item">
-                            <span class="workflow-icon">[R]</span>
+                            <span class="workflow-icon">[-]</span>
                             <span>Claude Code - CLI development</span>
                         </div>
                         <div class="workflow-item">
-                            <span class="workflow-icon">[R]</span>
+                            <span class="workflow-icon">[-]</span>
                             <span>Cursor - AI-assisted coding</span>
                         </div>
                         <div class="workflow-item">
-                            <span class="workflow-icon">[R]</span>
+                            <span class="workflow-icon">[-]</span>
                             <span>Custom repo workflows</span>
                         </div>
                     </div>
@@ -458,20 +448,20 @@
 
             <!-- Links Panel -->
             <div class="panel">
-                <div class="panel-header">~/connect</div>
+                <div class="panel-header">connect</div>
                 <div class="panel-content">
                     <div class="links-grid">
                         <a href="https://raybox.io" class="link-item" target="_blank">
-                            <span>[→]</span> Raybox
+                            <span>[-]</span> Raybox
                         </a>
                         <a href="https://github.com/Jasper-Hall" class="link-item" target="_blank">
-                            <span>[→]</span> GitHub
+                            <span>[-]</span> GitHub
                         </a>
                         <a href="https://www.linkedin.com/in/jasper-hall-a218a9225/" class="link-item" target="_blank">
-                            <span>[→]</span> LinkedIn
+                            <span>[-]</span> LinkedIn
                         </a>
                         <a href="https://www.instagram.com/jaece.xd" class="link-item" target="_blank">
-                            <span>[→]</span> Instagram
+                            <span>[-]</span> Instagram
                         </a>
                     </div>
                 </div>
@@ -480,7 +470,7 @@
             <!-- Footer -->
             <div class="footer">
                 <span>[status: building]</span>
-                <span>[theme: edex-ui]</span>
+                <span>[theme: arthur]</span>
                 <span>last updated: <span id="last-updated"></span></span>
             </div>
         </div>
