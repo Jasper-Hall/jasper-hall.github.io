@@ -1,4 +1,4 @@
-<!-- Force redeployment -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,12 +6,16 @@
     <title>jasperhall | Creative Technologist</title>
     <style>
         :root {
-            --bg: #1a1b1e;
-            --panel-bg: #25262b;
-            --text: #c1c2c5;
-            --text-dim: #5c5f66;
-            --border: 1px solid #373a40;
-            --border-hover: 1px solid #5c5f66;
+            --bg: #1c1c1c;
+            --panel-bg: #232323;
+            --panel-hover: #2a2a2a;
+            --accent: #6495ed;
+            --accent-dim: rgba(100, 149, 237, 0.25);
+            --accent-glow: rgba(100, 149, 237, 0.15);
+            --text: #ddeedd;
+            --text-dim: #887766;
+            --border: 1px solid rgba(100, 149, 237, 0.3);
+            --border-bright: 1px solid rgba(100, 149, 237, 0.5);
         }
 
         * {
@@ -46,11 +50,11 @@
         }
 
         .ascii-mini {
-            color: var(--text);
+            color: #b0c4de;
             font-size: 9px;
             white-space: pre;
             line-height: 1.1;
-            opacity: 0.9;
+            text-shadow: 0 0 10px rgba(176, 196, 222, 0.3);
         }
 
         .status-line {
@@ -69,17 +73,29 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
+            background: var(--accent);
+            animation: pulse 3s infinite;
+            box-shadow: 0 0 8px var(--accent-dim);
+        }
+
+        .status-dot.offline {
             background: var(--text-dim);
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         .status-label {
             color: var(--text-dim);
-            text-transform: lowercase;
-            letter-spacing: 0px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .status-value {
-            color: var(--text);
+            color: var(--accent);
         }
 
         /* Grid Layout */
@@ -93,6 +109,11 @@
         .panel {
             background: var(--panel-bg);
             border: var(--border);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .panel:hover {
+            border-color: var(--accent-dim);
         }
 
         .panel-header {
@@ -102,15 +123,13 @@
             padding: 8px 12px;
             border-bottom: var(--border);
             font-size: 0.65rem;
-            text-transform: lowercase;
-            letter-spacing: 0px;
-            color: var(--text);
-            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
         }
 
         .panel-header::before {
-            content: "/";
-            opacity: 0.5;
+            content: "›";
         }
 
         .panel-content {
@@ -130,8 +149,8 @@
 
         .tagline {
             font-size: 1.1rem;
-            color: var(--text);
-            letter-spacing: 0px;
+            color: var(--accent);
+            letter-spacing: 1px;
         }
 
         .subtitle {
@@ -158,13 +177,20 @@
             padding: 8px 10px;
             border: var(--border);
             font-size: 0.7rem;
+            background: var(--accent-glow);
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .tech-item:hover {
+            background: var(--accent-dim);
+            border-color: var(--accent);
         }
 
         .tech-category {
-            color: var(--text-dim);
+            color: var(--accent);
             font-size: 0.55rem;
-            text-transform: lowercase;
-            letter-spacing: 0px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 4px;
         }
 
@@ -178,17 +204,18 @@
         .project-card {
             border: var(--border);
             padding: 12px;
-            transition: border-color 0.2s;
+            transition: background-color 0.2s;
         }
 
         .project-card:hover {
-            border-color: var(--border-hover);
+            background: var(--panel-hover);
+            border-color: var(--accent);
         }
 
         .project-card h3 {
             font-size: 0.8rem;
             font-weight: normal;
-            color: var(--text);
+            color: var(--accent);
             margin-bottom: 6px;
         }
 
@@ -208,8 +235,9 @@
         .tag {
             font-size: 0.55rem;
             padding: 2px 6px;
-            border: var(--border);
-            color: var(--text-dim);
+            border: 1px solid rgba(100, 149, 237, 0.2);
+            color: #87ceeb;
+            background: rgba(100, 149, 237, 0.08);
         }
 
         /* Workflows */
@@ -226,10 +254,16 @@
             padding: 8px 10px;
             border: var(--border);
             font-size: 0.7rem;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .workflow-item:hover {
+            background: var(--accent-glow);
+            border-color: var(--accent);
         }
 
         .workflow-icon {
-            opacity: 0.5;
+            color: var(--accent);
             font-size: 0.6rem;
         }
 
@@ -253,16 +287,17 @@
         }
 
         .link-item:hover {
-            border-color: var(--border-hover);
+            background: var(--accent-glow);
+            border-color: var(--accent);
+        }
+
+        .link-item:hover span {
+            color: var(--accent);
         }
 
         .link-item span {
             color: var(--text-dim);
             transition: color 0.2s;
-        }
-
-        .link-item:hover span {
-            color: var(--text);
         }
 
         /* Footer */
@@ -280,7 +315,7 @@
         }
 
         .footer span {
-            color: var(--text-dim);
+            color: var(--accent);
         }
 
         /* Responsive */
@@ -340,7 +375,7 @@
         <div class="grid">
             <!-- Hero Panel -->
             <div class="panel hero-panel">
-                <div class="panel-header">identity</div>
+                <div class="panel-header">~/identity</div>
                 <div class="panel-content">
                     <div class="hero-content">
                         <p class="tagline">Creative Technologist</p>
@@ -351,7 +386,7 @@
 
             <!-- About Panel -->
             <div class="panel">
-                <div class="panel-header">about</div>
+                <div class="panel-header">~/about</div>
                 <div class="panel-content">
                     <p class="bio">
                         I build software and hardware tools for music-makers and artists: audio-reactive visuals, fluid improvisational performance hardware, and generative experiences. Currently pursuing MS in Entrepreneurship and Innovation at University of San Francisco and building Raybox.
@@ -361,7 +396,7 @@
 
             <!-- Tech Stack Panel -->
             <div class="panel">
-                <div class="panel-header">stack</div>
+                <div class="panel-header">~/stack</div>
                 <div class="panel-content">
                     <div class="tech-grid">
                         <div class="tech-item">
@@ -386,7 +421,7 @@
 
             <!-- Projects Panel -->
             <div class="panel" style="grid-column: span 2;">
-                <div class="panel-header">projects</div>
+                <div class="panel-header">~/projects</div>
                 <div class="panel-content">
                     <div class="projects-grid">
                         <div class="project-card">
@@ -427,19 +462,19 @@
 
             <!-- AI Workflows Panel -->
             <div class="panel">
-                <div class="panel-header">ai-workflows</div>
+                <div class="panel-header">~/ai-workflows</div>
                 <div class="panel-content">
                     <div class="workflow-list">
                         <div class="workflow-item">
-                            <span class="workflow-icon">[-]</span>
+                            <span class="workflow-icon">[R]</span>
                             <span>Claude Code - CLI development</span>
                         </div>
                         <div class="workflow-item">
-                            <span class="workflow-icon">[-]</span>
+                            <span class="workflow-icon">[R]</span>
                             <span>Cursor - AI-assisted coding</span>
                         </div>
                         <div class="workflow-item">
-                            <span class="workflow-icon">[-]</span>
+                            <span class="workflow-icon">[R]</span>
                             <span>Custom repo workflows</span>
                         </div>
                     </div>
@@ -448,20 +483,20 @@
 
             <!-- Links Panel -->
             <div class="panel">
-                <div class="panel-header">connect</div>
+                <div class="panel-header">~/connect</div>
                 <div class="panel-content">
                     <div class="links-grid">
                         <a href="https://raybox.io" class="link-item" target="_blank">
-                            <span>[-]</span> Raybox
+                            <span>[→]</span> Raybox
                         </a>
                         <a href="https://github.com/Jasper-Hall" class="link-item" target="_blank">
-                            <span>[-]</span> GitHub
+                            <span>[→]</span> GitHub
                         </a>
                         <a href="https://www.linkedin.com/in/jasper-hall-a218a9225/" class="link-item" target="_blank">
-                            <span>[-]</span> LinkedIn
+                            <span>[→]</span> LinkedIn
                         </a>
                         <a href="https://www.instagram.com/jaece.xd" class="link-item" target="_blank">
-                            <span>[-]</span> Instagram
+                            <span>[→]</span> Instagram
                         </a>
                     </div>
                 </div>
