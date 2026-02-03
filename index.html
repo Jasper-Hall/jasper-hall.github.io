@@ -45,14 +45,7 @@
             border: var(--border);
             background: var(--panel-bg);
             margin-bottom: 16px;
-            gap: 24px;
-        }
-
-        .hero-layout {
-            display: flex;
-            align-items: flex-start;
             gap: 20px;
-            flex: 1;
         }
 
         .hero-ascii {
@@ -63,17 +56,10 @@
             text-shadow: 0 0 8px rgba(176, 196, 222, 0.2);
         }
 
-        .hero-text {
+        .hero-content {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            padding-top: 2px;
-        }
-
-        .tagline {
-            font-size: 0.85rem;
-            color: var(--accent);
-            letter-spacing: 1px;
+            gap: 6px;
         }
 
         .jasperhall-ascii {
@@ -81,6 +67,12 @@
             font-size: 2px;
             white-space: pre;
             line-height: 1.1;
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            color: var(--accent);
+            letter-spacing: 1px;
             margin-top: 4px;
         }
 
@@ -97,7 +89,8 @@
             flex-direction: column;
             gap: 8px;
             font-size: 0.55rem;
-            padding-top: 4px;
+            margin-left: auto;
+            padding-top: 2px;
         }
 
         .status-item {
@@ -351,16 +344,13 @@
                 gap: 12px;
             }
 
-            .hero-layout {
-                flex-direction: column;
-            }
-
             .hero-ascii, .jasperhall-ascii {
                 font-size: 2px;
             }
 
             .status-line {
                 flex-direction: row;
+                margin-left: 0;
                 gap: 16px;
             }
         }
@@ -370,8 +360,7 @@
     <div class="container">
         <!-- Top Bar with Hero -->
         <div class="top-bar">
-            <div class="hero-layout">
-                <pre class="hero-ascii">
+            <pre class="hero-ascii">
   ▄▄▖                              ▗▖ ▗▖     ▗▄▖  ▗▄▖
   ▀▜▌                              ▐▌ ▐▌     ▝▜▌  ▝▜▌
    ▐▌ ▟██▖▗▟██▖▐▙█▙  ▟█▙  █▟█▌     ▐▌ ▐▌ ▟██▖ ▐▌   ▐▌
@@ -379,10 +368,9 @@
    ▐▌▗█▀▜▌ ▀▀█▖▐▌ ▐▌▐▛▀▀▘ █        ▐▌ ▐▌▗█▀▜▌ ▐▌   ▐▌
 ▐▄▄▟▌▐▙▄█▌▐▄▄▟▌▐█▄█▘▝█▄▄▌ █        ▐▌ ▐▌▐▙▄█▌ ▐▙▄  ▐▙▄
  ▀▀▘  ▀▀▝▘ ▀▀▀ ▐▌▀▘  ▝▀▀  ▀        ▝▘ ▝▘ ▀▀▝▘  ▀▀   ▀▀
-                </pre>
-                <div class="hero-text">
-                    <p class="tagline">Creative Technologist</p>
-                    <pre class="jasperhall-ascii">
+            </pre>
+            <div class="hero-content">
+                <pre class="jasperhall-ascii">
 
 
 
@@ -413,10 +401,9 @@
                            .:::--:..
 
 
-
-                    </pre>
-                    <p class="subtitle">Artist & musician turned builder, creating tools for sound, visuals, and performance.</p>
-                </div>
+                </pre>
+                <p class="tagline">Creative Technologist</p>
+                <p class="subtitle">Artist & musician turned builder, creating tools for sound, visuals, and performance.</p>
             </div>
             <div class="status-line">
                 <div class="status-item">
